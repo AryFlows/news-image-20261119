@@ -1,18 +1,17 @@
-// Frost Front Page — news-image-20261119 (make.fun).
-// Entry program: copies the pre-rendered front page to /output/entry.png.
-// The image itself is built by render.py (PIL) from news verified against
-// reporting dated 19 November 2026; this program only copies bytes, so
-// both harness runs write byte-identical output. No network, no input.
-import { copyFileSync, existsSync, mkdirSync } from "node:fs";
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+// Frost Front Page v2 — news-image-20261119 entry point (Node 22, stdlib only).
+//
+// The front page is rendered by render_v2.py into entry.png, which sits
+// beside this file; this program just places that file where the grader
+// reads it. Deterministic by construction: the same bytes every run.
+//
+// Local check:  mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
-const here = dirname(fileURLToPath(import.meta.url));
-const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+import { copyFileSync, mkdirSync } from 'node:fs';
+import { join } from 'node:path';
+
+const outDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 mkdirSync(outDir, { recursive: true });
-const outPath = join(outDir, "entry.png");
-copyFileSync(join(here, "entry.png"), outPath);
-if (!existsSync(outPath)) {
-  throw new Error(`entry.png was not written to ${outPath}`);
-}
-console.log("wrote", outPath);
+copyFileSync(
+  new URL('./entry.png', import.meta.url),
+  join(outDir, 'entry.png'),
+);
