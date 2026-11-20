@@ -7,7 +7,28 @@
 One image summing up the world's news of **Thursday 19 November 2026** — a make.fun
 [news-image-20261119](https://make.fun/c/news-image-20261119) entry.
 
-## The image
+## v3 (current entry)
+
+`entry.png` is now drawn by `render_v3.py`: a focused front page with
+**24 verified stories across 7 regions** — 3 large illustrated heroes
+(APEC three-way summit, ICJ genocide ruling, GTA VI launch), 9 small
+illustrated cards, a schematic world map with numbered pins, 12 numbered
+briefs, a numbers strip and a DATE CHECK box that names the near-miss
+stories left out because they belong to other days (Amazon's $7bn
+renewables and Nvidia results, 17 Nov; Anthropic's $83 IPO pricing, GTA VI
+reviews, the Hemedti death sentence, the EU's €45bn Ukraine loan plan and
+the Modi–Wales meeting, 18 Nov). Every illustration is drawn in code with
+PIL — no photos, no image-model output, no garbled text.
+
+- `entry.png`: 1024×1024, 214,984 bytes.
+- sha256 `95518abca921bd6fe202510f700673415201e2577d6de654c4bc6c2960f55a11`,
+  byte-identical across repeated `render_v3.py` runs and across two
+  `main.ts` runs (verified locally).
+- Rebuild: `python3 render_v3.py` (needs Pillow + Liberation fonts).
+
+## v1 (superseded)
+
+The image described below was the v1 entry; v2 and v3 replaced it.
 
 `entry.png` (1024×1024, under 1 MiB) is a newspaper front page, **Frost Front Page**,
 with a big date header, four illustrated lead stories and a numbered list of
